@@ -1,0 +1,64 @@
+classDiagram
+
+class GameAnalysis{
+    +FieldState field
+}
+
+class FieldState{
+    +Grid left
+    +Grid coop
+    +Grid right
+    +setScored(gridId, cellId, gamePieceType, auto)
+}
+
+class Grid{
+    +GridRow top
+    +GridRow middle
+    +GridRow bottom
+}
+
+class GridRow{
+    +GridCell left
+    +GridCell center
+    +GridCell right
+}
+
+class GridCell{
+    +GamePieceType occupied_by
+    +completesLink() bool
+    +int currentScore
+    +int valueIfScored
+}
+
+class GamePieceType{
+    <<enumeration>>
+    NONE
+    CONE
+    CUBE
+}
+
+class GridIndex{
+    <<enumeration>>
+    LEFT
+    COOP
+    RIGHT
+}
+
+class GridLocation{
+    <<enumeration>>
+    TOP_LEFT
+    TOP_CENTER
+    TOP_RIGHT
+    MIDDLE_LEFT
+    MIDDLE_CENTER
+    MIDDLE_RIGHT
+    BOTTOM_LEFT
+    BOTTOM_CENTER
+    BOTTOM_RIGHT
+}
+
+GameAnalysis *-- FieldState
+FieldState o-- Grid
+Grid o-- GridRow
+GridRow o-- GridCell
+GridCell o-- GamePieceType
