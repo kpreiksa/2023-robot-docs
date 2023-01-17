@@ -119,7 +119,7 @@ An implementation of SwerveModule
 SwerveModuleGroup
 ^^^^^^^^^^^^^^^^^
 
-A group of individual ``SwerveModule``s (ie. a chassis)
+A group of individual ``SwerveModule`` s (ie. a chassis)
 
 SwerveModuleTelemetry
 ^^^^^^^^^^^^^^^^^^^^^
