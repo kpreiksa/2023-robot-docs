@@ -34,3 +34,4 @@ html_theme = 'furo'
 html_static_path = ['_static']
 
 # push test, after changing permission
+# push test, after changing github pages
