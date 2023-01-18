@@ -15,9 +15,11 @@ author = 'FRC3707'
 
 extensions = [
     # 'javasphinx',
-    'sphinx.ext.todo',
+    # 'sphinx.ext.todo',
     'sphinxcontrib.mermaid',
 ]
+
+mermaid_cmd = './node_modules/.bin/mmdc'
 
 templates_path = ['_templates']
 exclude_patterns = []
