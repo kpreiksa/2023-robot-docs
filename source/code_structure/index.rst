@@ -2,7 +2,7 @@
 Code Structure
 ##############
 
-The intent of this page is to describe the structure of 3707's robot software.
+The intent of this page is to describe the structure of robot software.
 
 Directories
 ***********

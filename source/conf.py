@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'FRC3707_2023'
-copyright = '2023, FRC3707'
-author = 'FRC3707'
+project = '2023_Robot'
+copyright = '2023, Me'
+author = 'Me'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
