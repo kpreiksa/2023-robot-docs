@@ -33,4 +33,4 @@ exclude_patterns = []
 html_theme = 'furo'
 html_static_path = ['_static']
 
-# push test
+# push test, after changing permission
