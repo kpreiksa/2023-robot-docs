@@ -4,12 +4,21 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Clean Docs",
+            "type": "shell",
+            "command": "source ~/Developer/pyenv/sphinx_gen/bin/activate && make clean",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
             "label": "Generate Docs",
             "type": "shell",
             "command": "source ~/Developer/pyenv/sphinx_gen/bin/activate && make html",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
+            "dependsOn": ["Clean Docs"],
             "problemMatcher": [],
             "group": {
                 "kind": "build",

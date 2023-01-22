@@ -12,3 +12,5 @@ Welcome to 2023 Robot's documentation!
 
    code_structure/index
    code_diagrams/index
+   robot_configuration/index
+   vendor_info/index

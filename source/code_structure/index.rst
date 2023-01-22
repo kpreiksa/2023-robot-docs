@@ -91,11 +91,67 @@ of driver profiles
      - Stores the state of sticks (axes) and buttons being sent from the DriverStation and does rising/falling edge detection.
      - Seems like a **RE-IMPLEMENTATION** of ``XBoxController``
 
+   * - ``ControllerDriveInputs``
+     - Performs drive-specific adjustments to controller inputs. Includes functionality such as cubing inputs for preceision control, max velocity, deadzone, etc.
+     - This is a great idea for advanced control!
+
+   * - ``ControllerRumbleTypes``
+     - Defines enums for controller rumble
+     - Great operator feedback
+
+   * - ``DriverProfile``
+     - Allows for customization of controls based on driver preferences
+     - This is great, not only from a practical sense (ie. if the team has multiple drivers), but also from a code organization/abstraction sense. This means that there is one place where all preferences (as opposed to functionality/logic) is defined.
+
+   * - ``DriverProfile.Triggers``
+     - Defines different triggers/"actions" the driver would want to perform.
+     - It is great that these are defined explicitly 
+
+   * - ``HybridGenericHID``
+     - Defines different types of HID to use for control. 
+     - Appears to be unused. The types appear to be defined in **WPILib**, but implemented here as an enum
+
+   * - ``OperatorProfile``
+     - Similar to ``DriverProfile`` but for operator actions
+     - 
 
 leds
 ----
 
 Libraries related to interacting with LEDs (ie. providing driver/human player feedback)
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``CANdleAnimation``
+     - Defines an interface for CANdle animations to implement
+     - 
+
+   * - ``CANdleColor``
+     - Defines colors as RGB combinations 
+     - 
+
+   * - ``ColorAnimationBuilder``
+     - Simplifies building animations involving one color using the phoenix libraries
+     - 
+
+   * - ``ColorAnimationTypes``
+     - Defines enum of supported animation types
+     - 
+
+   * - ``LEDGroup``
+     - Defines an LED group (start, end, layer)
+     -
+
+   * - ``RainbowAnimationBuilder``
+     - Simplifies building a rainbow animation using phoenix libraries
+     - 
+
 
 motors
 ------
@@ -104,10 +160,56 @@ Libraries related to interacting with motor controllers. Specifically, implement
 motor controllers which only update their state when commanded value changes. These are 
 instantiated with "factory" classes. 
 
-.. hint::
+.. admonition:: Question
+   :class: hint
 
     What is the benefit of this? Is it to save on CAN bandwidth or other performance metric?
 
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``LazyCANSparkMax``
+     - Extends ``CANSparkMax``, overrides ``.set(double speed)`` method to reduce CAN usage by only sending new values.
+     - 
+
+   * - ``LazyTalonFX``
+     - Extends ``TalonFX``, overrides ``.set(double speed)`` method to reduce CAN usage by only sending new values.
+     -
+
+   * - ``LazyTalonSRX``
+     - Extends ``TalonSRX``, overrides ``.set(double speed)`` method to reduce CAN usage by only sending new values.
+     -
+
+   * - ``LazyVictorSPX``
+     - Extends ``VictorSPX``, overrides ``.set(double speed)`` method to reduce CAN usage by only sending new values.
+     -
+
+   * - ``SparkMaxFactory``
+     - Provides static methods which return a ``LazyCANSparkMax`` (aka "Factory" methods), configured with good default values
+     - Is there any reason to move some of this config into a config file? Or does this class serve as the config file, and additional configurations will be handled within this file? In general I like this because it makes motor controller definition a single line of code that is clear rather than doing all of the configuration in-line (too confusing, too verbose)
+
+   * - ``SparkUtil``
+     - Provides methods of retreiving, parsing, and storing faults. The default way of doing this requries many calls. This class greatly simplifies capturing all faults.
+     - 
+
+   * - ``TalonFXFactory``
+     - Provides static methods which return a ``LazyTalonFX`` (aka "Factory" methods), configured with good default values
+     -
+
+   * - ``TalonFXProFactory``
+     - Provides static methods which return a ``TalonFX`` (aka "Factory" methods), configured with good default values for Phoenix Pro.
+     -
+
+   * - ``TalonUtil``
+     - Provides methods or retreiving, parsing, and storing faults. Also provides methods for retreiving faults from Phoenix pro itself.
+     - 
+     
 power
 -----
 
