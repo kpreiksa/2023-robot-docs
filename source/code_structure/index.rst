@@ -17,10 +17,60 @@ audio
 
 Libraries related to producing audio with motors.
 
+Uses the WPILib ``Filesystem`` object to get files from the deploy directory.
+
+.. tip::
+    Use the ``Filesystem.getDeployDirectory`` wpilib function to get a proper 
+    path relative to the deploy directory.
+
 dashboard
 ---------
 
 Libraries related to sending information to the dashboard (SmartDashboard/ShuffleBoard)
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``Alert``
+     - Sends persistent alerts to the driver station
+     - We should use this for critical errors to help with debugging
+
+   * - ``SendableTriggerButton``
+     - Allows elements on the driver station to function like a button
+     - With a touchscreen, perhaps this would be useful for game piece scoring
+
+   * - ``SendableTriggerSwitch``
+     - Similar to ``SendableTriggerButton``, but for continuing actions (but can also trigger actions on rising/falling edges)
+     - 
+
+   * - ``TelemetryFromSupplier``
+     - Allows sending data to the dashboard from any class which implments a ``.get()`` method (``Supplier`` interface)
+     - 
+
+   * - ``TelemetryObject``
+     - Allows sending data to the dashboard and a datalog function (any class which implements a ``.accept(Object)`` method - ie. a ``Consumer`` interface)
+     - 
+
+   * - ``WidgetConfig``
+     - Configures a Shuffleboard widget based on location and type (including custom widgets)
+     - 
+
+   * - ``WidgetObject``
+     - Represents a Shuffleboard widget configured with a ``WidgetConfig``
+     - 
+
+   * - ``WidgetSendable``
+     - Does the same, but for ``Sendable`` datatypes.
+     - 
+
+   * - ``WidgetVideoStream``
+     - Does the same, but for a video stream
+     - 
 
 input
 -----
@@ -28,6 +78,19 @@ input
 Libraries related to getting information from drivers, including controllers, as well 
 as providing limited driver feedback through controller rumble. Also contains implementation 
 of driver profiles
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``Controller``
+     - Stores the state of sticks (axes) and buttons being sent from the DriverStation and does rising/falling edge detection.
+     - Seems like a **RE-IMPLEMENTATION** of ``XBoxController``
+
 
 leds
 ----
