@@ -33,3 +33,6 @@ Docs and Links
      - PhotonVision
      - `PhotonVision Documentaton <https://docs.photonvision.org/en/latest/>`_ 
 
+   * - Software (autonomous)
+     - AutoBuilder
+     - `AutoBuilder GitHub <https://github.com/FRC3476/AutoBuilder>`_  

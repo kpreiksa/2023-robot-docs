@@ -32,6 +32,17 @@ Java Concepts
 Control Concepts
 ****************
 
+Kinematics and Odometry
+=======================
+
+Kinematics describes the movement of the robot (both forwards-backwards, left-to-right, and rotaton)
+
+Odometry is the process of estimating the position of the robot on the field. 
+
+Kinematics will primarily work with ``ChassisSpeeds`` objects, and odometry will primarily work with ``Pose2d`` objects.
+
+Kinematics can also transform speeds between robot-relative and field-relative
+
 PID
 ===
 
@@ -44,6 +55,8 @@ Ramsete
 Geometric Concepts
 ******************
 
+Pose
+====
 
 WPI References
 **************
@@ -61,5 +74,14 @@ WPI References
    * - `Ramsete Controller <https://docs.wpilib.org/en/stable/docs/software/advanced-controls/trajectories/ramsete.html>`_ 
      - Describes how a Ramsete controller works
 
+   * - `Path Planning <https://docs.wpilib.org/en/stable/docs/software/pathplanning/index.html>`_ 
+     - Describes path planning as a concept and how to implement it on an FRC robot
 
-     
+   * - `Intro to Kinematics <https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/intro-and-chassis-speeds.html>`_ 
+     - Describes the concepts of Kinematics and Odometry, and the ``ChassisSpeeds`` object used in Java to work with Kinematics.
+
+   * - `Swerve Drive Kinematics <https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html>`_ 
+     - Kinematics for Swerve Drive robots!
+
+   * - `Swerve Drive Odometry <https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-odometry.html>`_ 
+     - Odometry for Swerve Drive robots!
