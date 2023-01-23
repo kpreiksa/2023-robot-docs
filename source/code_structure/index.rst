@@ -4,6 +4,29 @@ Code Structure
 
 The intent of this page is to describe the structure of robot software.
 
+Java Concepts
+*************
+
+.. list-table:: 
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Term
+     - Description
+
+   * - ``interface``
+     - Defines what methods a class must implement. That is, it defines a way to interact with an object of that type (ie. to "interface" with it), but does not define what these interactions are. 
+
+   * - ``abstract class``
+     - A class which defines some "base" functionality of a class, but which can be extended (with the ``extend`` keyword) by child classes.
+
+   * - ``final``
+     - This type modifier means that a reference (ie. variable) cannot be reassigned to another object. That is, you cannot make the pointer point to another spot in memory. However, if the object itself can make changes to itself (through methods or properties), those can be changed.
+
+   * - Singleton
+     - A pattern in which there is exactly one instance of a class in the entire program. This is (almost) always implemented as a ``static`` reference inside the class itself.
+
+
 Directories
 ***********
 
@@ -11,6 +34,59 @@ lib
 ===
 
 Contains libraries used throughout the code.
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``CoordSysUtil``
+     - A collection of methods to calculate poses, angles, and distances depending on alliance
+     - Not implemented yet
+
+   * - ``Counter``
+     - A counter with initial, min, and max values, which can wrap-around values
+     -
+
+   * - ``ElevArmKinematics``
+     - Kinematics to model an elevator arm
+     - Not implemented yet
+
+   * - ``FailSource``
+     - An enum representing different types of faults
+     - 
+
+   * - ``LatchedBoolean``
+     - A boolean which only returns true once (when it changes from false to true)
+     - 
+
+   * - ``LinearInterpolationTable``
+     - Implements linear interpolation based on a table of values
+     - 
+
+   * - ``LoopingQueue``
+     - Implementation of a queue which wraps around to the beginning after iterating through the whole queue.
+     -
+
+   * - ``NetworkStatus``
+     - An enum representing the status of the network (disconnected, connected to DS only, or connected to FMS)
+     -
+
+   * - ``PIDConstants``
+     - Configures phoenix pro constants
+     - 
+
+   * - ``ThreadedRunnable``
+     - Schedules a runnable as a thread
+     - 
+
+   * - ``Utility``
+     - Various methods to work with strings, numbers, arrays, system functionality (threads, etc.)
+     - 
+     
 
 audio
 -----
@@ -213,26 +289,106 @@ instantiated with "factory" classes.
 power
 -----
 
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``BatteryState``
+     - Represents the state of the battery (voltage, estimated SoC), power draw (current, wattage), and implications (ie. brownout)
+     - 
+
+   * - ``EnergyBlock``
+     - An interface to represent a group of energy consuming devices that can have their power reduced and restored synchronously
+     - 
+
+
 Libraries related to monitoring the power system of the robot. This includes voltage and 
 current monitoring, brownout detection, and more. 
-
-``EnergyBlock`` is an interface allowing devices to be disabled if desired. 
+ 
 
 selftest
 --------
 
 Provides monitoring of the system and reporting of faults. 
 
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``DeviceStatus``
+     - Enum representing state of a device in the diagnostics framework
+     - 
+
+   * - ``StatusReporter``
+     - An interface (implemented mostly in Diagnostics subsystem) defining what a device has to do to report status
+     - 
+
+   * - ``StatusReporterBase``
+     - An abstract base class which implements the methods defined by ``StatusReporter`` 
+     - 
+
+   * - ``SystemDiagnostics``
+     - Defines system diagnostics for motor controllers, etc. 
+     - 
+
 sensors
 -------
 
 Libraries related to sensor interfacing (CAN Coder)
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``CANCoderProFactory``
+     - Provides static methods which return a ``CANcoder`` (aka "Factory" methods), configured with good default values
+     - 
 
 subsystem
 ---------
 
 Libraries related to thread and task executor subsystems. 
 Uses classes from ``java.util.concurrency`` 
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``OldAbstractSubsystem``
+     - Deprecated abstract subsystem
+     - 
+
+   * - ``ThreadSubsystem``
+     - An abstract class which defines how a threaded subsystem works. The only abstract methods (which must be implemented by a child class) are ``.fastUpdate()`` and ``.slowUpdate()``. This abstract class wraps those methods to ensure the thread stays running (watchdog), and schedules the ``slowUpdate`` to run at a rate that is a multiple of the ``fastUpdate`` rate. 
+     -
+
+   * - ``TaskExecutorSubsystem``
+     - An abstract class which extends ``ThreadSubsystem`` and defines a subsystem which executes a task at the ``fastUpdate`` rate. 
+     - 
+
+   * - ``TaskExecutorSubsystem``
+     - An abstract class which defines a subsystem which executes a task at the ``fastUpdate`` rate. 
+     - 
+
+   * - ``ThreadWatchdog``
+     - A class which implements methods to monitor a ``ThreadSubsystem``
+     - 
 
 swerve
 ------
@@ -306,10 +462,22 @@ vision
 
 Libraries related to vision processing 
 
-AprilTagMetadata
-^^^^^^^^^^^^^^^^
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
 
-Simple class to represent an AprilTag and its position
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``AprilTagMetadata``
+     - Simple class to represent an AprilTag and its position
+     - 
+
+   * - ``VisionPoseEstimate``
+     - A class to represent the pose estimate retrieved from vision and when it was retrieved
+     -
+
 
 robot
 =====
