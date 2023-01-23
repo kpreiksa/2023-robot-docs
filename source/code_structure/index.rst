@@ -86,7 +86,7 @@ Contains libraries used throughout the code.
    * - ``Utility``
      - Various methods to work with strings, numbers, arrays, system functionality (threads, etc.)
      - 
-     
+
 
 audio
 -----
@@ -485,32 +485,121 @@ robot
 Files related to the base robot object (ie. definitions, constants, 
 configuration).
 
-BuildConstants
---------------
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
 
-Metadata associated with the build, such as source branch, build parameters, 
-etc. 
+   * - Class/File
+     - Description
+     - Comments
 
-Constants
----------
+   * - ``BuildConstants``
+     - Metadata associated with the build, such as source branch, build parameters, etc. 
+     - 
 
-Configuration that changes based on robot build, motors, tuning, 
-user preferences, etc. 
+   * - ``Constants``
+     - Defines many constants about the robot (ie. configuration, rather than logic). Contains things such as: CAN configuration, Driver/Operator profiles, drivetrain configuration (motor controllers, gear ratios, PID constants, geometry/wheelbase), pneumatics, LEDs/human feedback, vision, etc. 
+     - 
 
-FieldConstants
---------------
+   * - ``FieldConstants``
+     - Defines constants about the field (eg. AprilTag locations)
+     - 
 
-Information about the field, which should not change between 
-matches, robots, etc. 
+   * - ``Main``
+     - Starts up the ``RobotBase`` code
+     - 
 
-OI (Operator Interface)
------------------------
+   * - ``OI``
+     - "Operator Interface" - Defines everything the operator needs to interface with (drive and tracking subsystems, tasks which get run when buttons are pressed, etc.)
+     - 
 
-Initializes code to interface with the operator/driver
+   * - ``Robot``
+     - Defines background interactions with the robot (ie. base functionality provided by WPILib scheduling). Sets up subsystems that run in the background, adds widgets to Shuffleboard (including some that configure how the robot will work - ie. ``Sendable``). ``robotInit`` method 
+     - 
+
+   * - ``SwerveLibrary``
+     - Contains definitions for each chassis. Defines which motors, encoders, and module config (ie. PID constants, wheel diameter, and gear ratios) applies to the chassis. This is set in ``Drive.java`` in *subsystems* folder
+     -
+
+.. admonition:: Question
+   :class: hint
+
+    Is there a special way to schedule auton code that is not in ``autonomousPeriodic``?
 
 
-SwerveLibrary
--------------
+subsystems
+==========
 
-Various implementaiton of swerve drive, defined for different robots, etc. 
+Defines subsystems, which are entities (usually to be controlled or monitored) consisting of hardware and actions to perform on that hardware.
 
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``Claw``
+     - 
+     - 
+
+   * - ``Diagnostics``
+     - 
+     - 
+
+   * - ``Drive``
+     - 
+     - 
+
+   * - ``EnergyManagement``
+     - 
+     - 
+
+   * - ``InputManager``
+     - 
+     - 
+
+   * - ``LEDController``
+     - 
+     - 
+
+   * - ``Manipulator``
+     - 
+     - 
+
+   * - ``Pneumatics``
+     - 
+     - 
+
+   * - ``RobotTracker``
+     - 
+     - 
+
+   * - ``Telemetry``
+     - 
+     - 
+
+
+tasks
+=====
+
+.. list-table:: 
+   :widths: 25 50 25
+   :header-rows: 1
+
+   * - Class/File
+     - Description
+     - Comments
+
+   * - ``InstantRamsete``
+     - 
+     - 
+
+   * - ``NoPushMode``
+     - 
+     - 
+
+   * - ``TeleopDrive``
+     - 
+     - 
