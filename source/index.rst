@@ -10,6 +10,7 @@ Welcome to 2023 Robot's documentation!
    :maxdepth: 1
    :caption: Contents
 
+   code_concepts/index
    code_structure/index
    code_diagrams/index
    robot_configuration/index

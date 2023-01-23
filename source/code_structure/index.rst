@@ -7,6 +7,9 @@ The intent of this page is to describe the structure of robot software.
 Java Concepts
 *************
 
+This is described further in :ref:`code-concepts` but is provided here for convenience because 
+these concepts are discussed heavily in the content on this page.
+
 .. list-table:: 
    :widths: 25 75
    :header-rows: 1
